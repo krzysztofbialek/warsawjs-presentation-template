@@ -43,32 +43,199 @@
 
     <section class="slide">
         <div>
-            <h2>Plain Text on Your Slides</h2>
-
-            <p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco
-                laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in
-                reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.
-            </p>
+            <h2>Me</h2>
+            <ul>
+                <li>Ruby on Rails / Ember developer at Rebased</li>
+                <li>Co-founder of CodeQuack.com</li>
+                <li>Rails Girls mentor</li>
+            </ul>
         </div>
     </section>
 
     <section class="slide">
         <div>
-            <h2>All Kind of Lists</h2>
-            <ol>
-                <li>Simple lists are marked with bullets</li>
-                <li>Ordered lists begin with a number</li>
-                <li>You can even nest lists one inside another
-                    <ul>
-                        <li>Or mix their types</li>
-                        <li>But do not go too far</li>
-                        <li>Otherwise audience will be bored</li>
-                    </ul>
-                </li>
-                <li>Look, seven rows exactly!</li>
-            </ol>
+            <img class='ember' src="pictures/ember.jpeg" alt="">
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Why we like Ember</h2>
+            <ul>
+                <li>Fast and snappy user experience</li>
+                <li>Well organized structure</li>
+                <li>Easy to understand and learn</li>
+                <li>Works nice with servers thanks to <b>Ember Data</b></li>
+            </ul>
+        </div>
+
+    </section>
+
+    <section class="slide shout">
+        <div>
+            <h2>But is it really true?</h2>
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/futro.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>What was wrong?</h2>
+
+            <ul>
+                <li>Expensive rerendering - prior to v1.13.0</li>
+                <li>What are views for at all?</li>
+                <li>Lots of magic - not as much as on My Little Pony but still</li>
+                <li>Compability of Ember, Ember Data, Ember ClI versions</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>The Ember Project</h2>
+
+            <p>
+                Starting from version <strong>2.0</strong> Coordinated relase of <strong>Ember</strong> with releases of the main
+                ecosystem tools maintained by the core team. This will allow painless update of related tools in the project.
+            <p>
+
+            <ul>
+                <li>Ember CLI</li>
+                <li>Ember Data</li>
+                <li>Liquid Fire</li>
+                <li>List View</li>
+            </ul>
+
+        </div>
+    </section>
+
+    <section class="slide center">
+        <div>
+            <h2>1.13.0 is the new 2.0...</h2>
+            <br />
+            <br />
+            <br />
+            <h2>almost</h2>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class='center'>
+            <h2>
+                The new and shiny rendering engine.
+            </h2>
+            <br/>
+            <img class='center-block' src="pictures/glimmer.png" alt="">
+            <br/>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <pre>
+                <code>{ enabled: true, name: "Tom Dale",</code>
+                <code>  details: "A True Scotsman" }</code>
+            </pre>
+            <pre>
+                <code>&lt;div class="item"&gt;</code>
+                <code>  <mark>{{#if enabled}}</mark></code>
+                <code>    &lt;p&gt;It's Enabled&lt;/p&gt;</code>
+                <code>  <mark>{{/if}}</mark></code>
+                <code>  &lt;p&gt;<mark>{{name}}</mark>&lt;/p&gt;</code>
+                <code>  &lt;p class="popover"&gt;<mark>{{details}}</mark>&lt;/p&gt;</code>
+                <code>&lt;/div&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Changes and deprecations</h2>
+
+            <ul>
+                <li>No more <mark>views</mark>.</li>
+                <li><mark>Ember.select</mark> gone.</li>
+                <li><mark>Checkbox view</mark> gone.</li>
+                <li><mark>Item controller</mark> with <strong>{{each}}</strong>.</li>
+            </ul>
+
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Changes and deprecations</h2>
+            <p>New syntax for <mark>bind-attr</mark></p>
+            <pre>
+                <code>&lt;div <mark>{{bind-attr class="isActiveUser"}}</mark>&gt;&lt;/div&gt;</code>
+
+                <code>// Need to be changed to:</code>
+
+                <code>&lt;div class=<mark>{{if isActiveUser 'is-active-user'}}</mark>&gt;&lt;/div&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Changes and deprecations</h2>
+            <p>One-way values by default</p>
+            <pre>
+                <code>{{!-- title is a mutable two-way binding --}}</code>
+                <code>{{my-component title=model.name}}</code>
+
+                <code>{{!-- title is just an (immutable) value --}}</code>
+                <code>&lt;my-component title={{model.name}} /&gt;</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>New stuff => helpers and components</h2>
+            <ul>
+                <li>New <mark>components</mark> life cycle hooks like: <strong>didInitAttrs, didUpdateAttrs</strong> and more</li>
+                <li>No more required dashes for helpers</li>
+                <li>Ability to access services in helpers</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>New stuff => each-in helper</h2>
+            <pre>
+                <code>let items = {</code>
+                <code>  "Item 1": 1234,</code>
+                <code>  "Item 2": 3456</code>
+                <code>};</code>
+
+                <code>{{#each-in items as |key value|}}</code>
+                <code>  &lt;p&gt;{{key}}: {{value}}&lt;/p&gt;</code>
+                <code>{{/each-in}}</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>New stuff => get helper</h2>
+            <pre>
+                <code>let items = {</code>
+                <code>  "Item 1": 1234,</code>
+                <code>  "Item 2": 3456</code>
+                <code>};</code>
+
+                <code>{{get items 'Item 1'}}</code>
+                <code>// or</code>
+                <code>{{get items somePathReturningKey}}</code>
+            </pre>
         </div>
     </section>
 

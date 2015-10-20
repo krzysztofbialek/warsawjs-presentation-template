@@ -112,3 +112,20 @@
 .badge-left a:hover {
     background: #f0db4f;
 }
+
+.center {
+    text-align: center;
+}
+
+.center-block {
+    display: block;
+    margin: auto;
+}
+
+.ember {
+    height: 100%;
+    margin: auto;
+    display: block;
+    bottom: 35px;
+    position: relative;
+}
