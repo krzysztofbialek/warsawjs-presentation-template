@@ -48,6 +48,7 @@
                 <li>Ruby on Rails / Ember developer at Rebased</li>
                 <li>Co-founder of CodeQuack.com</li>
                 <li>Rails Girls mentor</li>
+                <li><a href='http://github.com/krzysztofbialek'>Find me on github</a>
             </ul>
         </div>
     </section>
@@ -209,6 +210,23 @@
 
     <section class="slide">
         <div>
+            <h2>New stuff => component attrs property</h2>
+            <ul>
+                <li>Way to distinguish component own properties from passed values</li>
+                <li>Accessible through <mark>attrs</mark> property</li>
+                <pre>
+                    <code>&lt;my-component title={{model.name}} /&gt;</code>
+                    <code>// available with </code>
+                    <code>this.attrs.title</code>
+                    <code>// instead of </code>
+                    <code>this.get('title')</code>
+                </pre>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
             <h2>New stuff => each-in helper</h2>
             <pre>
                 <code>let items = {</code>
@@ -241,69 +259,136 @@
 
     <section class="slide">
         <div>
-            <h2>JavaScript Samples</h2>
+            <h2>New stuff => action helper</h2>
             <pre>
-                <code><mark class="comment">// Crockford style IIFE</mark></code>
-                <code>(function () {</code>
-                <code>  var <mark>someVar</mark> = 'value';</code>
-                <code>  console.<mark class="important">log</mark>(someVar);</code>
-                <code>}());</code>
+                <code>let items = {</code>
+                <code>  "Item 1": 1234,</code>
+                <code>  "Item 2": 3456</code>
+                <code>};</code>
+
+                <code>{{get items 'Item 1'}}</code>
+                <code>// or</code>
+                <code>{{get items somePathReturningKey}}</code>
             </pre>
         </div>
     </section>
+
     <section class="slide">
         <div>
-            <h2>Even Tables</h2>
-            <table>
-                <tr>
-                    <th scope="col">Locavore</th>
-                    <th>Umami</th>
-                    <th>Helvetica</th>
-                    <th>Vegan</th>
-                </tr>
-                <tr>
-                    <th scope="row">Fingerstache</th>
-                    <td>Kale</td>
-                    <td>Chips</td>
-                    <td>Keytar</td>
-                </tr>
-                <tr>
-                    <th scope="row">Sriracha</th>
-                    <td>Gluten-free</td>
-                    <td>Ennui</td>
-                    <td>Keffiyeh</td>
-                </tr>
-                <tr>
-                    <th scope="row">Thundercats</th>
-                    <td>Jean</td>
-                    <td>Shorts</td>
-                    <td>Biodiesel</td>
-                </tr>
-                <tr>
-                    <th scope="row">Terry</th>
-                    <td>Richardson</td>
-                    <td>Swag</td>
-                    <td>Blog</td>
-                </tr>
-            </table>
-            <p>It’s good to have information organized.</p>
+            <h2>New stuff => mut helper</h2>
+
+            Way to modify parent value with one way binding
+
+            <pre>
+                <code>// before 1.13.0 </code>
+                <code>{{my-counter count=activatedCount}}</code>
+
+                <code>// but we still want to update parent value</code>
+
+                <code>&lt;my-counter count={{mut activatedCount}} /&gt;</code>
+            </pre>
         </div>
     </section>
 
-    <section class="slide cover">
+    <section class="slide">
         <div>
-            <img src="pictures/bigphoto.jpg" alt="">
+            <h2>One more thing...</h2>
         </div>
     </section>
 
     <section class="slide shout">
         <div>
-            <h2>See you next month at WarsawJS</h2>
+            <h2>Drop support for IE8!!!</h2>
+        </div>
+    </section>
+
+     <section class="slide">
+        <div>
+            <h2>How to upgrade</h2>
+            <ul>
+                <li>Start with moving to <mark>v1.13.0</mark>.</li>
+                <li>Fix <mark>tons</mark> of deprecations you will get.</li>
+                <li>Update <mark>all</mark> packages/plugins</li>
+                <li>Change all <mark>views</mark> into components</li> 
+                <li>Update to <mark>2.0</mark></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>How to upgrade - tools</h2>
+            <ul>
+                <li><a href='#'>mixonic/ember-cli-deprecation-workflow</a></li>
+                <li>Plugins with deprecated features like <mark>bind-attr</mark> or <mark>view</mark></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>What about Ember Data?</h2>
+            <p>Changes to <mark>find</mark></p>
+            <ul>
+                <li>Currently overloaded.</li>
+                <li><mark>store.find(type)</mark></li>
+                <li><mark>store.find(type,id)</mark></li>
+                <li><mark>store.find(type, {query})</mark></li>
+                <li><mark>find</mark> is deprecated and replaced with better named methods</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class='wide-table'>
+            <h2 class='center'>What about Ember Data?</h2>
+            <p class='center'>New methods for quering server/storage</p>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Async from server/store</th>
+                  <th>Sync from store</th>
+                  <th>Query server</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope='row'><b>Single Record</b></td>
+                  <td>findRecord(type,id)</td>
+                  <td>peekRecord(type, id)</td>
+                  <td>queryRecord(type, {query})</td>
+                </tr>
+                <tr>
+                  <th scope='row'><b>All Records</b></td>
+                  <td>findAll(type)</td>
+                  <td>peekAll(type)</td>
+                  <td>query(type, {query})*</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Where to go next?</h2>
+            <ul>
+                <li><a href='http://emberjs.com'>Emberjs.com</a></li>
+                <li><a href='http://emberjs.com/blog/2015/08/13/ember-2-0-released.html'>Emberjs.com</a></li>
+                <li><a href='https://youtu.be/o12-90Dm-Qs?t=2855'>Ember Conf Keynote - Glimmer part</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide shout">
+        <div>
+            <h2>Happy updating!</h2>
         </div>
     </section>
 
     <p class="badge"><a href="https://github.com/warsawjs/presentation-template">Fork me on Github</a></p>
-    <p class="badge badge-left"><a href="#">Fullscreen</a></p>
+    <p class="badge badge-left"><a href="http://github.com/krzysztofbialek">Fullscreen</a></p>
 
     <div class="progress">
         <div></div>

@@ -129,3 +129,10 @@
     bottom: 35px;
     position: relative;
 }
+
+.slide > div.wide-table {
+    width: 995px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
